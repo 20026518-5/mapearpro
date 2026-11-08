@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  --color-paper: #f3f1eb;
+  --color-paper-2: #e8e4da;
+  --color-card: #fbfaf6;
+  --color-ink: #1c1915;
+  --color-ink-soft: #5e584e;
+  --color-line: #ddd6c8;
+  --color-accent: #1e3a32;
+  --color-accent-fg: #f6f3ec;
+  --color-accent-soft: #e4efe9;
+  --color-danger: #8d342c;
+  --color-ok: #1d6b45;
+  --color-warn: #8a5a24;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+}
+
+.dark {
+  --color-paper: #121311;
+  --color-paper-2: #1c1e1a;
+  --color-card: #1b1c19;
+  --color-ink: #f3f1eb;
+  --color-ink-soft: #b7b2a6;
+  --color-line: #34362f;
+  --color-accent: #d7e4dc;
+  --color-accent-fg: #12201b;
+  --color-accent-soft: #24302b;
+  --color-danger: #f0b4ac;
+  --color-ok: #9dceb4;
+  --color-warn: #e6c39a;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    text-rendering: optimizeLegibility;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+
+  input[type="checkbox"] {
+    accent-color: var(--color-accent);
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+}
+
+.flow-viewport {
+  height: min(32rem, 68vh);
+  min-height: 22rem;
+}
+
+.diagram-scroll {
+  overflow-x: auto;
+}
+
+.diagram-scroll svg {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: auto;
+}
+
+.mermaid-host svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .step-enter {
+    animation: step-rise 250ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@keyframes step-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
